@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'ember-cli-rails'
 gem 'jsonapi-rails'
 gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
