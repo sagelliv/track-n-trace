@@ -1,0 +1,26 @@
+AllCops:
+  DisplayCopNames: true
+  Include:
+    - '**/config.ru'
+  Exclude:
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'Rakefile'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'frontend/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - '**/*_spec.rb'
