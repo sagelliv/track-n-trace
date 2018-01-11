@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bcrypt', '~> 3.1.7'
 gem 'jsonapi-rails'
 gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
@@ -12,7 +13,6 @@ gem 'puma', '~> 3.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -23,6 +23,7 @@ gem 'puma', '~> 3.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker', '~> 1.7'
   gem 'rubocop', '~> 0.49.1', require: false
   gem 'spring-commands-rspec'
 end
@@ -35,7 +36,7 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.6'
-  gem 'factory_girl_rails', '~> 4.8'
+  gem "factory_bot_rails", "~> 4.0"
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-rubocop'
