@@ -38,6 +38,6 @@ FactoryBot.define do
   factory :container do
     number { Faker::Number.number(8) }
     size "20'"
-    type 'GP'
+    container_type 'GP'
   end
 end
