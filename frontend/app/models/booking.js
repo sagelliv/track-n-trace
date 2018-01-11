@@ -1,6 +1,15 @@
 import DS from 'ember-data';
-const { Model } = DS;
+const { attr, hasMany, Model } = DS;
 
 export default Model.extend({
+  containers:    hasMany('container'),
+
+  blNumber:      attr('string'),
+  steamshipLine: attr('string'),
+  origin:        attr('string'),
+  destination:   attr('string'),
+  vessel:        attr('string'),
+  voyage:        attr('string'),
+  vesselEta:     attr('date')
 });
 

@@ -9,6 +9,10 @@ export default Controller.extend({
       adapter.search({
         bl_number: this.get('searchTerm'),
         steamship_line: 'pil'
+      }).then((booking) => {
+        this.get('store').pushPayload('booking', booking);
+        const slug = booking['data']['attributes']['blNumber'];
+        this.transitionToRoute('booking', slug);
       });
     }
   }

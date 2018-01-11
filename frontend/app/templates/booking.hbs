@@ -1,0 +1,7 @@
+<p>Booking {{model.blNumber}}</p>
+<p>Containers</p>
+<ul>
+  {{#each containers as |container|}}
+    <li>{{container.size}} {{container.containerType}} {{container.number}} </li>
+  {{/each}}
+</ul>

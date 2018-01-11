@@ -1,12 +1,14 @@
 module Api
   module V1
     class BookingsController < ApplicationController
-      def show
+      def index
+        render jsonapi: Booking.where(params[:filter].permit!),
+          include: [:containers]
       end
 
       def search
-        render jsonapi: Booking.last, include: [:containers]
-        return
+        # render jsonapi: Booking.last, include: [:containers]
+        # return
 
         attrs = crawler.extracted_attrs
         booking = Booking.create!(attrs[:booking])
@@ -16,6 +18,7 @@ module Api
           Container.create!(container_attrs.merge(booking: booking))
           Container.create!(container_attrs.merge(booking_event: event))
         end
+        render jsonapi: booking, include: [:containers]
 
       end
 
