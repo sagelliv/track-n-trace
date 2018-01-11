@@ -1,5 +1,10 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#bs-navbar type='inverse' as |navbar|}}
+  <div class="navbar-header">
+    {{navbar.toggle}}
+    {{#link-to "bookings" class="navbar-brand"}}Track{{/link-to}}
+  </div>
+{{/bs-navbar}}
 
-{{outlet}}
+<div class="container">
+  {{outlet}}
+</div>

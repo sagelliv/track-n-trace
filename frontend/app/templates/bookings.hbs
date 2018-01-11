@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class='data-test-booking-search'>
+      {{#bs-form formLayout='vertical' onSubmit=(action 'search') as |form|}}
+          {{form.element label="B/L Number" onChange=(action (mut searchTerm))}}
+        {{bs-button defaultText="Search" type="primary" buttonType="submit"}}
+      {{/bs-form}}
+    </div>
+  </div>
+</div>
