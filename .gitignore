@@ -20,3 +20,6 @@
 
 # vim
 *.swp
+
+# Redis
+dump.rdb

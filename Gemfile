@@ -10,6 +10,7 @@ gem 'ember-cli-rails'
 gem 'jsonapi-rails'
 gem 'mechanize'
 gem 'rails', '~> 5.1.4'
+gem 'sidekiq'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 # Use Redis adapter to run Action Cable in production

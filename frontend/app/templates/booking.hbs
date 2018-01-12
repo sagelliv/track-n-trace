@@ -1,7 +1,14 @@
 <p>Booking {{model.blNumber}}</p>
 <p>Containers</p>
+{{#bs-button
+  type="info"
+  icon=(if model.watch "glyphicon glyphicon-eye-close" "glyphicon glyphicon-eye-open")
+  onClick=(action 'toggleWatch')
+}}
+  {{if model.watch 'Unwatch' 'Watch'}}
+{{/bs-button}}
 <ul>
-  {{#each containers as |container|}}
-    <li>{{container.size}} {{container.containerType}} {{container.number}} </li>
+  {{#each model.containers as |container|}}
+    <li>{{container.size}} {{container.containerType}} {{container.number}}</li>
   {{/each}}
 </ul>

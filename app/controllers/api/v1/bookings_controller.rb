@@ -5,6 +5,16 @@ module Api
         render jsonapi: Booking.where(filter_params), include: included
       end
 
+      def update
+        booking = find_booking
+        if booking.update(params[:_jsonapi][:data][:attributes].permit!)
+          BookingWorker.perform_async(booking.bl_number, booking.steamship_line)
+          render jsonapi: booking
+        else
+          render jsonapi_errors: booking.errors
+        end
+      end
+
       def search
         service = BookingService.new(crawler, params[:bl_number])
 
@@ -17,6 +27,10 @@ module Api
       end
 
       private
+
+      def find_booking
+        Booking.find(params[:id])
+      end
 
       def filter_params
         params[:filter][:bl_number] = Booking.normalized_bl_number(

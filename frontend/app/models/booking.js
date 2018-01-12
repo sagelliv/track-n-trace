@@ -6,6 +6,7 @@ export default Model.extend({
 
   blNumber:      attr('string'),
   steamshipLine: attr('string'),
+  watch:         attr('boolean'),
   origin:        attr('string'),
   destination:   attr('string'),
   vessel:        attr('string'),

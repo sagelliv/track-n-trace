@@ -1,8 +1,16 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  containers: computed('model.containers.[]', function() {
-    return this.get('model.containers');
-  })
+  flashMessages: service(),
+
+  actions: {
+    toggleWatch() {
+      const model = this.get('model');
+      model.set('watch', !model.get('watch'));
+      model.save().then(() =>{
+        this.get('flashMessages').success('Successfully updated booking');
+      });
+    }
+  }
 });
