@@ -4,6 +4,6 @@ const { attr, belongsTo, Model } = DS;
 export default Model.extend({
   booking:      belongsTo('booking'),
 
-  createdAt:    attr('date'),
+  createdAt:    attr('string'),
   eventChanges: attr('string')
 });

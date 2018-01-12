@@ -1,13 +1,10 @@
-<p>Booking {{model.blNumber}}</p>
-<p>Containers</p>
-{{loading-button
-  type='success'
-  buttonIcon=buttonIcon
-  text=(if model.watch 'Unwatch' 'Watch')
-  buttonTask=toggleWatch
-}}
-<ul>
-  {{#each model.containers as |container|}}
-    <li>{{container.size}} {{container.containerType}} {{container.number}}</li>
-  {{/each}}
-</ul>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    {{booking-card
+      booking=model
+      containers=model.containers
+      events=model.bookingEvents
+      toggleButton=toggleWatch
+    }}
+  </div>
+</div>

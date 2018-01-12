@@ -1,14 +1,18 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <div class='data-test-booking-search'>
+    <div class='data-test-booking-search booking-search'>
       {{#bs-form formLayout='vertical' onSubmit=(perform search) as |form|}}
-        {{form.element label="B/L Number" onChange=(action (mut searchTerm))}}
-        {{loading-button
-          buttonText='Search'
-          type='primary'
-          buttonType='submit'
-          buttonTask=search
-        }}
+        <div class="col-sm-10">
+          {{form.element label="B/L Number" onChange=(action (mut searchTerm))}}
+        </div>
+        <div class="col-sm-2 search-button">
+          {{loading-button
+            buttonText='Search'
+            type='primary'
+            buttonType='submit'
+            buttonTask=search
+          }}
+        </div>
       {{/bs-form}}
     </div>
   </div>

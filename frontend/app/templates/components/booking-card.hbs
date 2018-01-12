@@ -1,0 +1,73 @@
+<div class="booking-card">
+  {{loading-button
+    type='success'
+    buttonIcon=buttonIcon
+    text=(if booking.watch 'Unwatch' 'Watch')
+    buttonTask=toggleButton
+  }}
+
+  <div class="row">
+    <div class="col-xs-12 booking-title">
+      B/L Number: <span class="txt-emphasis">{{booking.blNumber}}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="compact">Steamship: {{booking.steamshipLine}}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4">
+      <p class="compact">Vessel: {{booking.vessel}}</p>
+      <p class="compact">Voyage: {{booking.voyage}}</p>
+    </div>
+
+    <div class="col-xs-4">
+      <p class="compact">Origin: {{booking.origin}}</p>
+      <p class="compact">Destination: {{booking.destination}}</p>
+    </div>
+
+    <div class="col-xs-4 eta">
+      <div class="txt-lrg">{{booking.vesselEta}}</div>
+      <p class="compact">(Vessel ETA)</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="booking-card-title">Containers</p>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <td>Number</td>
+            <td>Size</td>
+            <td>Type</td>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each containers as |container|}}
+            <tr>
+              <td>{{container.number}}</td>
+              <td>{{container.size}}</td>
+              <td>{{container.containerType}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="booking-card-title">Events</p>
+      {{#each orderedEvents as |event|}}
+        <p class="compact txt-emphasis">
+          ({{event.createdAt}}) {{event.eventChanges}}
+        </p>
+      {{/each}}
+    </div>
+  </div>
+</div>

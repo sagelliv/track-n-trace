@@ -1,0 +1,32 @@
+.booking-card {
+  margin-top: 40px;
+  padding: 20px;
+  border: 1px solid $dark-gray;
+  background-color: white;
+
+  .booking-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+
+  .eta {
+    margin-top: -5px;
+  }
+
+  .table {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .booking-card-title {
+    font-size: 1.2em;
+    color: $dark-gray;
+    margin-top: 30px;
+  }
+
+  .btn-success {
+    z-index: 1;
+    position: absolute;
+    right: 40px;
+  }
+}
