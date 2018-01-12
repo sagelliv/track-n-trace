@@ -8,10 +8,25 @@ class PilCrawler
   end
 
   def extracted_attrs
+    return { detail: 'invalid B/L number.' } unless valid?
+
     {
       booking: extracted_booking,
       containers: extracted_containers
     }
+  end
+
+  def errors
+    {
+      status: '422',
+      title: 'Invalid B/L number',
+      detail: 'Invalid B/L number.',
+      source: { pointer: 'data/attributes/bl_number' }
+    }
+  end
+
+  def valid?
+    json_data['err'] != 1
   end
 
   private

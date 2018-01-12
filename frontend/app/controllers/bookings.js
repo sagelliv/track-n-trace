@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
+  flashMessages: service(),
   searchTerm: null,
 
   actions: {
@@ -13,6 +15,9 @@ export default Controller.extend({
         this.get('store').pushPayload('booking', booking);
         const slug = booking['data']['attributes']['blNumber'];
         this.transitionToRoute('booking', slug);
+      }).catch((response) => {
+        const error = response.errors[0].detail;
+        this.get('flashMessages').danger(error);
       });
     }
   }

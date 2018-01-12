@@ -6,5 +6,11 @@
 {{/bs-navbar}}
 
 <div class="container">
+  {{#each flashMessages.queue as |flash|}}
+    <div class='data-test-flash'>
+      {{flash-message flash=flash}}
+    </div>
+  {{/each}}
+
   {{outlet}}
 </div>

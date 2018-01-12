@@ -48,6 +48,37 @@ describe PilCrawler do
         ]
       )
     end
+
+    it 'returns an error if the bl_number is invalid' do
+      bl_number = 'incorrect'
+      crawler = build_crawler(
+        bl_number, file_fixture('pil_error_response.txt').read
+      )
+
+      attrs = crawler.extracted_attrs
+
+      expect(attrs[:detail]).to eq('invalid B/L number.')
+      expect(attrs[:booking]).to be_nil
+      expect(attrs[:containers]).to be_nil
+    end
+  end
+
+  describe '#valid?' do
+    it 'returns true with a normal bl number' do
+      bl_number = 'TXG790214500'
+      crawler = build_crawler(bl_number, file_fixture('pil_response.txt').read)
+
+      expect(crawler.valid?).to be true
+    end
+
+    it 'returns false with an invalid bl number' do
+      bl_number = 'invalid'
+      crawler = build_crawler(
+        bl_number, file_fixture('pil_error_response.txt').read
+      )
+
+      expect(crawler.valid?).to be false
+    end
   end
 
   def build_crawler(bl_number, fixture)
