@@ -15,4 +15,10 @@ describe BookingEvent, type: :model do
   it { is_expected.to validate_presence_of(:voyage) }
   it { is_expected.to validate_presence_of(:vessel_eta) }
   it { is_expected.to validate_presence_of(:event_changes) }
+
+  it 'normalizes without PABV' do
+    subject.save!
+
+    expect(subject.bl_number[0..3]).to eq('PABV')
+  end
 end

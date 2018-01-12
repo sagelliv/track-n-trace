@@ -2,7 +2,7 @@ module Api
   module V1
     class BookingsController < ApplicationController
       def index
-        render jsonapi: Booking.where(params[:filter].permit!),
+        render jsonapi: Booking.where(filter_params),
           include: [:containers]
       end
 
@@ -24,9 +24,17 @@ module Api
 
       private
 
+      def filter_params
+        params[:filter][:bl_number] = Booking.normalized_bl_number(
+          params[:filter][:bl_number]
+        )
+        params[:filter].permit!
+      end
+
       def crawler
         class_name = "#{params[:steamship_line].camelize}Crawler"
-        class_name.constantize.new(params[:bl_number])
+        bl_number = Booking.request_bl_number(params[:bl_number])
+        class_name.constantize.new(bl_number)
       end
     end
   end
