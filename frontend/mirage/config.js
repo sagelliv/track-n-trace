@@ -1,4 +1,31 @@
 export default function() {
+  this.namespace = 'api/v1';
+  this.get('/bookings/search', (schema, request) => {
+    const blNumber = request.queryParams.bl_number;
+    return {
+      data: {
+        type: 'bookings',
+        id: 1,
+        attributes: {
+          bl_number: blNumber,
+          origin: 'Xingang'
+        }
+      }
+    };
+  });
+
+  this.get('/bookings/', (schema, request) => {
+    const blNumber = request.queryParams['filter[bl_number]'];
+    return {
+      data: [{
+        type: 'bookings',
+        id: 1,
+        attributes: {
+          bl_number: blNumber
+        }
+      }]
+    };
+  });
 
   // These comments are here to help you get started. Feel free to delete them.
 

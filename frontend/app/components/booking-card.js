@@ -2,7 +2,12 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default Component.extend({
-  eventSorting: ['createdAt:desc'],
+  init() {
+    this._super(...arguments);
+    this.eventSorting = ['createdAt:desc'];
+
+  },
+
   orderedEvents: computed.sort('events', 'eventSorting'),
 
   buttonIcon: computed('booking.watch', function() {

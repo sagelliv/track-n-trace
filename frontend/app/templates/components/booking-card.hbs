@@ -8,7 +8,10 @@
 
   <div class="row">
     <div class="col-xs-12 booking-title">
-      B/L Number: <span class="txt-emphasis">{{booking.blNumber}}</span>
+      B/L Number:
+      <span class="data-test-bl-number txt-emphasis">
+        {{booking.blNumber}}
+      </span>
     </div>
   </div>
 
@@ -25,7 +28,9 @@
     </div>
 
     <div class="col-xs-4">
-      <p class="compact">Origin: {{booking.origin}}</p>
+      <p class="compact data-test-booking-origin">
+        Origin: {{booking.origin}}
+      </p>
       <p class="compact">Destination: {{booking.destination}}</p>
     </div>
 
