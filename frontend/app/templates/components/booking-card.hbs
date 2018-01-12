@@ -2,7 +2,7 @@
   {{loading-button
     type='success'
     buttonIcon=buttonIcon
-    text=(if booking.watch 'Unwatch' 'Watch')
+    text=(if booking.watch 'Stop Watching' 'Watch')
     buttonTask=toggleButton
   }}
 
@@ -17,7 +17,7 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <p class="compact">Steamship: {{booking.steamshipLine}}</p>
+      <p class="compact">Steamship: {{uppercase booking.steamshipLine}}</p>
     </div>
   </div>
 

@@ -5,7 +5,7 @@ class SerializableBooking < JSONAPI::Serializable::Resource
              :voyage, :watch
 
   attribute :vessel_eta do
-    @object.vessel_eta.strftime('%Y-%m-%d')
+    @object.vessel_eta.strftime('%B %d, %Y')
   end
 
   has_many :containers
