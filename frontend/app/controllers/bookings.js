@@ -11,15 +11,19 @@ export default Controller.extend({
     yield adapter.search({
       bl_number: this.get('searchTerm'),
       steamship_line: 'pil'
-    }).then((booking) => {
-      this.get('store').pushPayload('booking', booking);
-      const slug = booking['data']['attributes']['blNumber'];
-      this.transitionToRoute('booking', slug);
-    }).catch((response) => {
-      const error = response.errors[0].detail;
-      this.get('flashMessages').danger(error);
-    }).finally(() => {
-      this.set('searchTerm', null);
-    });
-  }).drop()
+    }).then(this._successfulSearch.bind(this))
+      .catch(this._catchError.bind(this))
+      .finally(() => this.set('searchTerm', null))
+  }).drop(),
+
+  _successfulSearch(booking) {
+    this.get('store').pushPayload('booking', booking);
+    const slug = booking['data']['attributes']['blNumber'];
+    this.transitionToRoute('booking', slug);
+  },
+
+  _catchError(response) {
+    const error = response.errors[0].detail;
+    this.get('flashMessages').danger(error);
+  }
 });

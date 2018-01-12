@@ -6,12 +6,11 @@ module Api
       end
 
       def update
-        booking = find_booking
-        if booking.update(params[:_jsonapi][:data][:attributes].permit!)
-          schedule_booking_worker(booking)
-          render jsonapi: booking
+        if find_booking.update(params[:_jsonapi][:data][:attributes].permit!)
+          schedule_booking_worker
+          render jsonapi: find_booking
         else
-          render jsonapi_errors: booking.errors
+          render jsonapi_errors: find_booking.errors
         end
       end
 
@@ -26,10 +25,10 @@ module Api
 
       private
 
-      def schedule_booking_worker(booking)
-        number = booking.bl_number
-        line = booking.steamship_line
-        BookingWorker.perform_async(number, line) if booking.watch?
+      def schedule_booking_worker
+        number = find_booking.bl_number
+        line = find_booking.steamship_line
+        BookingWorker.perform_async(number, line) if find_booking.watch?
       end
 
       def find_booking
@@ -41,9 +40,9 @@ module Api
       end
 
       def crawler
-        class_name = "#{params[:steamship_line].camelize}Crawler"
-        bl_number = Booking.request_bl_number(params[:bl_number])
-        @crawler ||= class_name.constantize.new(bl_number)
+        @crawler ||= Booking.build_crawler(
+          params[:bl_number], params[:steamship_line]
+        )
       end
 
       def filter_params

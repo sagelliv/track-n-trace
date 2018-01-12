@@ -22,6 +22,12 @@ class Booking < ApplicationRecord
     number[0..3] == PREFIX ? number : PREFIX + number
   end
 
+  def self.build_crawler(bl_number, steamship_line)
+    class_name = "#{steamship_line.camelize}Crawler"
+    number = request_bl_number(bl_number)
+    class_name.constantize.new(number)
+  end
+
   def watch?
     ActiveModel::Type::Boolean.new.cast(watch)
   end
