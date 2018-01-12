@@ -22,6 +22,10 @@ class Booking < ApplicationRecord
     number[0..3] == PREFIX ? number : PREFIX + number
   end
 
+  def watch?
+    ActiveModel::Type::Boolean.new.cast(watch)
+  end
+
   private
 
   def normalize_bl_number
