@@ -4,7 +4,7 @@ class PilCrawler
 
   def initialize(bl_number, agent = Mechanize.new)
     @agent = agent
-    @bl_number = bl_number
+    @bl_number = Booking.request_bl_number(bl_number)
   end
 
   def extracted_attrs

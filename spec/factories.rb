@@ -8,7 +8,7 @@ FactoryBot.define do
 
   factory :booking do
     bl_number 'TXG790195200'
-    steamship_line 'PIL'
+    steamship_line 'pil'
     origin 'Xingang'
     destination 'Oakland'
     vessel 'CSCL AUTUMN'
@@ -20,7 +20,7 @@ FactoryBot.define do
     booking
 
     bl_number 'TXG790195200'
-    steamship_line 'PIL'
+    steamship_line 'pil'
     origin 'Xingang'
     destination 'Oakland'
     vessel 'CSCL AUTUMN'

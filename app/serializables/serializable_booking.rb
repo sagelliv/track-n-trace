@@ -5,4 +5,5 @@ class SerializableBooking < JSONAPI::Serializable::Resource
              :voyage, :vessel_eta
 
   has_many :containers
+  has_many :booking_events
 end

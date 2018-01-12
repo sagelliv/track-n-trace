@@ -12,4 +12,3 @@ export default Model.extend({
   voyage:        attr('string'),
   vesselEta:     attr('date')
 });
-
